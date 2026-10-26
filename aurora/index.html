@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aurora — despierta con un sonido distinto cada día</title>
+<meta name="description" content="Aurora es una app de alarmas que suena con un sonido distinto cada día.">
+<meta property="og:title" content="Aurora">
+<meta property="og:description" content="Despierta con un sonido distinto cada día.">
+<meta property="og:image" content="https://mymlab.github.io/aurora/icono.png">
+<link rel="icon" href="icono.png">
+<script>
+  // Enlace inteligente: lleva a la tienda del móvil que lo abre.
+  // APP_STORE se rellena cuando Aurora esté en la App Store.
+  var PLAY = "https://play.google.com/store/apps/details?id=app.mymlabs.aurora";
+  var APP_STORE = "";
+  var ua = navigator.userAgent || "";
+  var ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  if (/Android/i.test(ua)) location.replace(PLAY);
+  else if (ios && APP_STORE) location.replace(APP_STORE);
+</script>
+<style>
+  :root { --bg: #F3F1EB; --surface: #FBF9F4; --ink: #262012; --soft: #575756; --brand: #4E4A9A; --on-brand: #FFFFFF; --line: #DEDDDC; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1D1A35; --surface: #312E49; --ink: #F7F6F2; --soft: #BEBBCC; --brand: #B2A9F6; --on-brand: #16152E; --line: #46435F; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 32px 16px;
+    background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; text-align: center; }
+  main { max-width: 380px; width: 100%; }
+  .icono { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 10px 30px -12px rgba(18,14,8,.35); }
+  h1 { font-size: 30px; margin: 20px 0 6px; }
+  p { color: var(--soft); font-size: 16px; line-height: 1.5; margin: 0 0 28px; }
+  .tiendas { display: flex; flex-direction: column; gap: 12px; }
+  .tienda { display: block; padding: 15px 18px; border-radius: 999px; font-weight: 700; font-size: 15px; text-decoration: none; }
+  .tienda.activa { background: var(--brand); color: var(--on-brand); }
+  .tienda.pronto { background: var(--surface); color: var(--soft); border: 1px solid var(--line); }
+  footer { margin-top: 36px; font-size: 13px; }
+  footer a { color: var(--soft); }
+</style>
+</head>
+<body>
+<main>
+  <img class="icono" src="icono.png" alt="Icono de Aurora">
+  <h1>Aurora</h1>
+  <p>Despierta con un sonido distinto cada día.</p>
+  <div class="tiendas">
+    <a class="tienda activa" id="play" href="https://play.google.com/store/apps/details?id=app.mymlabs.aurora">Descargar en Google Play</a>
+    <a class="tienda pronto" id="ios">Muy pronto en iPhone</a>
+  </div>
+  <footer><a href="privacidad/">Política de privacidad</a> · <a href="mailto:mymlabs.dev@gmail.com">Contacto</a></footer>
+</main>
+<script>
+  if (APP_STORE) { var b = document.getElementById("ios"); b.href = APP_STORE; b.className = "tienda activa"; b.textContent = "Descargar en la App Store"; }
+</script>
+</body>
+</html>
